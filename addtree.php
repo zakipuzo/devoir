@@ -11,21 +11,11 @@ if (isset($_POST["name"], $_POST["parent"])) {
     $parent = $_POST["parent"];
     //VALIDATION todo
 
-    $isquestion= $_POST["isquestion"];
     
-
-    echo "<h1>".$_POST["isquestion"]."</h1>";
-  
     $tree = new Tree(0, $name);
 
     $tree->setParent($parent);
-    if(isset($_POST["isquestion"])){
-        
-        $tree->setIsQuestion(1);
-    }
-    else{
-        $tree->setIsQuestion(0);
-    }
+    
    
 
    
@@ -67,10 +57,7 @@ include("header.php");
 
 
     </div>
-    <div class="form-group">
-        <label for="isquestion">Cocher si c'est une question ou un indicateur pour ne pas l'afficher à la recherche:</label><br>
-        <input id="isquestion" type="checkbox" name="isquestion" style="height: 40px"   />
-    </div>
+   
     <input   type="submit" value="Ajouter" class="btn btn-primary btnsubmit">
 
 </form> 

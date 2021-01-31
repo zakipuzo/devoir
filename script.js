@@ -80,7 +80,7 @@ $(document).ready(function () {
           //if has child
 
           if (count < nextcount) {
-            res += "<li id=" + el.id + "><span>" + el.name + " <b>-</b></span>";
+            res += "<li id=" + el.id + "><span>" + el.name + " </span>";
             res += "<ul>";
           }
           else if (count == nextcount) {
@@ -164,7 +164,14 @@ $(document).ready(function () {
 
   function manageListNode() {
 
-    $(".menu").menu();
+    $(".menu").menu({
+      select: function (event, ui) {  
+       $("#nodedetails").html(ui.item.find("span:first").text())
+       
+      }
+    });
+
+
   }
 
 

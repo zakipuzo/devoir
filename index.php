@@ -6,41 +6,54 @@ include("TreeDAO.php");
 $dao = new TreeDAO(Connection::getConnection());
 
 
+if (isset($_POST["name"], $_POST["parent"])) {
+   $name = $_POST["name"];
+   $parent = $_POST["parent"];
+   //VALIDATION todo
+
+   
+   $tree = new Tree(0, $name);
+
+   $tree->setParent($parent);
+  
+  
+
+  
+
+   $res=$dao->add($tree);
+
+
+   $arbres = $dao->all();
+} else {
+
+   $arbres = $dao->all();
+}
+
+
 include("header.php");
 ?>
 
 
 
-<h6>Cette version support la recherche exacte du mot</h6>
-    
-    <form method="GET" class="text-center">
-    <div class="form-group">
-        <input id="s" type="text" placeholder="Rechercher" name="s" class="form-control" required />
-    </div>
-    
+<div class="row">
+<div class="col-md-12">
+<div id="nodelist">
  
-    <input   type="submit" value="Rechercher" class="btn btn-primary btnsubmit">
 
-</form> 
-   <hr>
-
-   <div id="Result">
-       <?php
-if(isset($_GET["s"])){
-    $search= $_GET["s"];
- 
-    $arbres = $dao->search($search);
- 
-       
-    }
-  ?>
-     
    </div>
-  
+</div>
+ <br><br>
+<div id="nodedetails" class="container-fluid pt-5">
 
 
-   <hr>
+   </div>
+</div>
+</div>
 
+</div>
+
+
+ 
   
    <?php
       

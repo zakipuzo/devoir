@@ -45,15 +45,14 @@ if(isset($_GET["added"])){
       <thead> 
     
       <th>Nom</th>
-      <th>Parent</th>
-      <th>Question?</th>
+      <th>Parent</th> 
       <th></th>
       </thead>
       <tbody>
       <?php
       
    foreach ($arbres as $key => $value) {
-      echo "<tr><td>" . $value->name. "</td><td>" . $value->parent->name. "</td><td>" . ($value->isquestion==0 ? "non" : "oui"). "</td><td><a href='app.php?deleteid=" . $value->id. "'>Supprimer</a></td></tr>";
+      echo "<tr><td>" . $value->name. "</td><td>" . $value->parent->name. "</td><td><a href='app.php?deleteid=" . $value->id. "'>Supprimer</a></td></tr>";
    }
    ?>
       </tbody>

@@ -17,7 +17,7 @@ class TreeDAO
     public  function all()
     {
         //$sql = "SELECT t1.name pname, t2.name cname FROM Tree t1 inner join Tree t2 on t1.id=t2.tree_parent";
-        $sql = "SELECT t1.node node, t1.id cid, t1.isquestion cisquestion, t1.name cname, t2.id pid, t2.name pname FROM trees t1 left join trees t2 on t1.treeId=t2.id order by t1.node asc";
+        $sql = "SELECT t1.node node, t1.id cid, t1.name cname, t2.id pid, t2.name pname FROM trees t1 left join trees t2 on t1.treeId=t2.id order by t1.node asc";
 
         $stm = $this->con->prepare($sql);
 
@@ -41,8 +41,7 @@ class TreeDAO
                 $parent = new Tree($value['pid'], $value['pname']);
                 $tree->setParent($parent);
 
-                $tree->setIsQuestion($value['cisquestion']);
-
+                
                 array_push($output, $tree);
             }
 
@@ -57,9 +56,9 @@ class TreeDAO
     {
         try {
             if ($tree->parent == 0)
-                $sql = "INSERT INTO trees (name, treeId, isquestion) VALUES ('" . $tree->name . "', NULL, $tree->isquestion)";
+                $sql = "INSERT INTO trees (name, treeId) VALUES ('" . $tree->name . "', NULL)";
             else
-                $sql = "INSERT INTO trees (name, treeId , isquestion) VALUES ('" . $tree->name . "', " . $tree->parent . ", $tree->isquestion)";
+                $sql = "INSERT INTO trees (name, treeId ) VALUES ('" . $tree->name . "', " . $tree->parent . ")";
 
 
             // use exec() because no results are returned
@@ -125,7 +124,7 @@ class TreeDAO
                             $node = $value["node"];
 
 
-                            $sql2 = "SELECT * from trees where node like '$node.%' and isquestion=0";
+                            $sql2 = "SELECT * from trees where node like '$node.%'";
 
                             $stm2 = $this->con->prepare($sql2);
                             $result = [];
@@ -164,9 +163,9 @@ class TreeDAO
     {
   //$sql = "SELECT t1.name pname, t2.name cname FROM Tree t1 inner join Tree t2 on t1.id=t2.tree_parent";
         if($id==NULL)
-  $sql = "SELECT id cid, name cname, treeId ctreeId, isquestion cisquestion, node cnode  FROM trees where treeId is null";
+  $sql = "SELECT id cid, name cname, treeId ctreeId, node cnode  FROM trees where treeId is null";
   else
-  $sql="SELECT t1.node cnode, t1.id cid, t1.isquestion cisquestion, t1.name cname, t2.id pid, t2.name pname FROM trees t1 left join trees t2 on t1.treeId=t2.id where t1.treeId=".$id." order by t1.node asc ";
+  $sql="SELECT t1.node cnode, t1.id cid, t1.name cname, t2.id pid, t2.name pname FROM trees t1 left join trees t2 on t1.treeId=t2.id where t1.treeId=".$id." order by t1.node asc ";
 
   $stm = $this->con->prepare($sql);
 
@@ -189,9 +188,7 @@ class TreeDAO
           $tree->setnode($value['cnode']); 
           $parent = new Tree($value['pid'], $value['pname']);
           $tree->setParent($parent);
-  
-          $tree->setIsQuestion($value['cisquestion']);
-
+   
           array_push($output, $tree);
       }
 
