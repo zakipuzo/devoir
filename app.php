@@ -15,9 +15,6 @@ if(isset($_POST["deleteall"])){
  }
 
 
-
-
-
 if(isset($_GET["deleteid"])){
     //TODO TRY CATCH
     $id=$_GET["deleteid"];

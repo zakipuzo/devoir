@@ -33,7 +33,7 @@ if (isset($_POST["name"], $_POST["parent"])) {
 include("header.php");
 ?>
  
-
+<div class="container">
 <form id="addnode" method="POST" name="addsheep">
     <div class="form-group">
         <label for="name">Nom du noeud:</label>
@@ -61,7 +61,7 @@ include("header.php");
     <input   type="submit" value="Ajouter" class="btn btn-primary btnsubmit">
 
 </form> 
-
+    </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

@@ -64,7 +64,7 @@ class TreeDAO
             // use exec() because no results are returned
             $this->con->exec($sql);
 
-            header('location:arbre.php');
+            header('location:index.php');
 
 
             $sql = "INSERT INTO trees (name, treeId) VALUES ('" . $tree->name . "', " . $tree->parent . ")";

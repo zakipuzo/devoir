@@ -37,10 +37,10 @@ if(isset($_GET["added"])){
    
       ?>
 
-
-<di>
-   <a href="addtree.php" class="text-dark"><h6> + Nouveau neaud</h6></a>
-</di>
+<div class="container">
+<div>
+   <a href="addtree.php"><h6> + Nouveau neaud</h6></a>
+</div>
    <table id="example" class="display table" style="width:100%">
       <thead> 
     
@@ -70,7 +70,7 @@ if(isset($_GET["added"])){
       //echo  char_count($arbres[$key]->node, ".")  ;
    }
    ?>
-  
+</div>
 <?php
 
 include("footer.php");

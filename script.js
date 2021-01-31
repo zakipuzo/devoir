@@ -13,16 +13,17 @@ $(document).ready(function () {
     location.href = "tableaux.php?id=" + id;
   })
 
+  //select2 plugin
   $("#parent").select2();
 
   $(".nav-link").addClass("active");
 
+  //Pour ne pas cliquer deux foix;
   $("#addnode").on("submit", function () {
     $(".btnsubmit").hide();
   });
 
   $('#example').DataTable({
-
     responsive: true,
     paging: true,
     searching: true,
@@ -37,21 +38,10 @@ $(document).ready(function () {
     }
   });
 
-  $('#example2').DataTable({
 
-    responsive: true,
-    paging: false,
-    searching: true,
-    select: true,
-    ordering: false,
-    language: {
-      processing: "Traitement en cours...",
-      search: "Rechercher&nbsp;:",
-      lengthMenu: "Afficher _MENU_ &eacute;l&eacute;ments",
-      info: "Total: _TOTAL_ ",
 
-    }
-  });
+
+
 
 
   $.ajax({
@@ -107,10 +97,9 @@ $(document).ready(function () {
     }
   });
 
-
+  // ici on va retourner plusieurs tab
   function organizeNodes(nodes) {
     var t = [];
-
     var o = [];
     nodes.map(node => {
 
